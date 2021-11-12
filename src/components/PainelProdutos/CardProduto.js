@@ -5,6 +5,9 @@ import styled from "styled-components";
 const ContainerAnuncio = styled.div`
   border: 1px solid black;
   padding: 8px;
+  img{
+    width: 100%;
+  }
 `
 const ContainerDescrição = styled.div`
     display: flex;
@@ -14,6 +17,7 @@ const ContainerDescrição = styled.div`
   p {
     margin: 4px 0;
   }
+
 `
 const BotaoCompra = styled.button`
     align-self: center;
