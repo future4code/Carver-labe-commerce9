@@ -75,7 +75,7 @@ export const HeaderStyled = styled.div`
 
 export default class App extends React.Component {
     state = {
-      display: MainHome
+      display: PaginaCompra
     }
 
     mostraProdutos = () => {
