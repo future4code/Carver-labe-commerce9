@@ -2,18 +2,23 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemProduto = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  align-items: center;
+
+  p {
+    margin: 0;
+  } 
 `
 
-export default class Produto extends React.Component{
+export default class ProdutoCarrinho extends React.Component{
 
   render(){
 
     return(
       <ItemProduto>
-        <a>{this.props.produto.quantidade}</a>
+        <a>{this.props.produto.quantidade}x</a>
         <a>{this.props.produto.nomeProduto}</a>
         <button>Remover</button>
       </ItemProduto>

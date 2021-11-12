@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Produto from "../Produto";
+import ProdutoCarrinho from "./ProdutoCarrinho";
 
 const ContainerCarrinho = styled.div`
   display: flex;
@@ -8,8 +8,8 @@ const ContainerCarrinho = styled.div`
   flex-direction: column;
 `
 const ContainerProdutos= styled.div`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  gap: 8px;
 `
 
 
@@ -46,7 +46,7 @@ export default class Carrinho extends React.Component {
         <h3>Carrinho:</h3>
         <ContainerProdutos>
         {this.state.produtos.map((produto) => {
-          return <Produto 
+          return <ProdutoCarrinho 
                     produto={produto}
                   />
           })
