@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-
-import ContainerProduto from "../PainelProdutos/ContainerProduto";
-import Carrinho from "../carrinho/Carrinho";
+import CardProduto from "../PainelProdutos/CardProduto"
+import Carrinho from "../Carrinho/Carrinho"
 
 import imgAnuncio from "../../assets/atro.png"
 
@@ -11,8 +10,8 @@ const ContainerPaginaCompra = styled.div`
   grid-template-columns: 1fr 3fr 1fr;
   padding: 16px;
   gap: 8px;
-
-const ContainerFiltro=styled.div`
+`
+const ContainerFiltro = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
