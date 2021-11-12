@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Filtro from "../Filtro/Filtro"
 import ContainerProduto from "../PainelProdutos/ContainerProduto";
-import Carrinho from "../Carrinho/Carrinho"
+import Carrinho from "../carrinho/Carrinho";
 import imgAnuncio from "../../assets/atro.png"
 
 const ContainerPaginaCompra = styled.div`
@@ -10,6 +9,11 @@ const ContainerPaginaCompra = styled.div`
   grid-template-columns: 1fr 3fr 1fr;
   padding: 16px;
   gap: 8px;
+`
+const Container=styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `
 const produtos = [{
   id: 1,
@@ -31,16 +35,48 @@ const produtos = [{
 }
 ]
 
-export default class PaginaCompra extends React.Component {
 
+export default class PaginaCompra extends React.Component {
+  state = {
+   valorMinimo:" ",
+   valorMaximo:" ",
+   buscaNome: " "
+  }
+  
+  onChangeMinimo = (event) => {
+    this.setState({valorMinimo:event.target.value})
+  }
+
+  onChangeMaximo = (event) => {
+    this.setState({valorMaximo:event.target.value})
+  }
+  
+  onChangeNome = (event) => {
+    this.setState({buscaNome:event.target.value})
+  }
+  
   render(){
     return(
       <ContainerPaginaCompra>
-      <Filtro></Filtro>
+              <Container>
+                <h3>Filtros</h3>
+                <label className="BotoesFiltros">
+                 <p>Valor Mínimo:</p>
+                 <input onChange={this.onChangeMinimo} type="number" placeholder=""></input>
+                </label>
+                <label className="BotoesFiltros">
+                 <p>Valor Máximo:</p>
+                 <input onChange={this.onChangeMaximo}type="number" placeholder=""></input>
+                </label>
+                <label className="BotoesFiltros">
+                <p>Busca por nome:</p>
+                 <input onChange={this.onChangeNome} type="text" placeholder=""></input>
+                </label>
+              </Container>
       <ContainerProduto
        produtos={produtos}
       /> 
-      <Carrinho></Carrinho>
+      <Carrinho/>
       </ContainerPaginaCompra>
     )
   }
