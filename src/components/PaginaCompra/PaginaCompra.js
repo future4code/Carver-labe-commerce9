@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Filtro from "../Filtro/Filtro"
-import CardProduto from "../PainelProdutos/CardProduto";
-import Carrinho from "../Carrinho/Carrinho"
+
+import ContainerProduto from "../PainelProdutos/ContainerProduto";
+import Carrinho from "../carrinho/Carrinho";
+
 import imgAnuncio from "../../assets/atro.png"
 
 const ContainerPaginaCompra = styled.div`
@@ -10,7 +11,13 @@ const ContainerPaginaCompra = styled.div`
   grid-template-columns: 1fr 3fr 1fr;
   padding: 16px;
   gap: 8px;
+
+const ContainerFiltro=styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `
+
 
 const ContainerPagina = styled.div`
 display: flex;
@@ -29,6 +36,7 @@ const FuncoesPagina = styled.div`
 display: flex;
 justify-content: space-around;
 `
+
 
 const produtos = [{
   id: 1,
@@ -110,29 +118,57 @@ const produtos = [{
 }
 ]
 
+
 export default class PaginaCompra extends React.Component {
   state = {
-    produtos: produtos,
-    sortingParamenter: "Name",
-    orderParamenter: 1
+   produtos: produtos,
+   sortingParamenter: "Name",
+   orderParamenter: 1,
+   valorMinimo:" ",
+   valorMaximo:" ",
+   buscaNome: " "
   }
-
+  
   updateSortingParamenter = (ev) => {
-    this.setState({
-      sortingParamenter: ev.target.value
-    })
+    this.setState({sortingParamenter: ev.target.value})
   }
 
   updateOrderParamenter = (ev) => {
-    this.setState({
-      orderParamenter: ev.target.value
-    })
+    this.setState({orderParamenter: ev.target.value})
   }
+
+  onChangeMinimo = (event) => {
+    this.setState({valorMinimo:event.target.value})
+  }
+
+  onChangeMaximo = (event) => {
+    this.setState({valorMaximo:event.target.value})
+  }
+  
+  onChangeNome = (event) => {
+    this.setState({buscaNome:event.target.value})
+  }
+  
+
 
   render() {
     return (
       <ContainerPaginaCompra>
-        <Filtro></Filtro>
+                  <ContainerFiltro>
+                <h3>Filtros</h3>
+                <label className="BotoesFiltros">
+                 <p>Valor Mínimo:</p>
+                 <input onChange={this.onChangeMinimo} type="number" placeholder=""></input>
+                </label>
+                <label className="BotoesFiltros">
+                 <p>Valor Máximo:</p>
+                 <input onChange={this.onChangeMaximo}type="number" placeholder=""></input>
+                </label>
+                <label className="BotoesFiltros">
+                <p>Busca por nome:</p>
+                 <input onChange={this.onChangeNome} type="text" placeholder=""></input>
+                </label>
+              </ContainerFiltro>
 
         <ContainerPagina>
           <FuncoesPagina>
@@ -179,6 +215,7 @@ export default class PaginaCompra extends React.Component {
         </ContainerPagina>
 
         <Carrinho></Carrinho>
+
 
       </ContainerPaginaCompra>
     )
