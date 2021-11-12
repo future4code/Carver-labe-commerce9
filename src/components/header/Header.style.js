@@ -11,8 +11,13 @@ export const HeaderStyled = styled.div`
     padding: 20px;
   }
 
-  img {
+  .astro-logo {
     height: 100px;
+  }
+
+  .icon-cart {
+    width: 30px;
+    height: 30px;
   }
 
   nav {

@@ -1,13 +1,14 @@
 import React from "react";
 import { HeaderStyled } from "./Header.style";
-import astroLogo from "../../assets/astro_logo.jpg";
+import astroLogo from "../../assets/icone_astro.png";
+import cart from "../../assets/cart.png";
 
 export const Header = () => {
   return (
     <HeaderStyled>
       <div className="nav-bar">
         <div className="logo">
-          <img src={astroLogo} alt="logo" />
+          <img className="astro-logo" src={astroLogo} alt="logo" />
         </div>
         <nav>
           <ul>
@@ -25,6 +26,7 @@ export const Header = () => {
             </li>
           </ul>
         </nav>
+        <img className="icon-cart" src={cart} alt="carrinho" />
       </div>
     </HeaderStyled>
   );
