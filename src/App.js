@@ -1,18 +1,21 @@
 import React from "react";
 import { AppContainer } from "./App.styled";
 // import Carrinho from "./components/carrinho/Carrinho";
-import Header from "./components/header/Header";
+// import Header from "./components/header/Header";
 import imgAstro from "./assets/astro_laranja.png";
 import navespacial from "./assets/navespacial.jpg";
 import nave2 from "./assets/astronauta1.jpg";
 import satelite2 from "./assets/satelite2.jpg";
 import produto1 from "./assets/nave-toy2.jpg";
+import NavBar from "./components/pages/NavBar/NavBar";
+import Annouc from "./components/pages/Annouc/Annouc";
 
 function App() {
   return (
     <AppContainer>
+      <Annouc />
+      <NavBar />
       <div className="top-page">
-        <Header></Header>
         <div className="row">
           <div className="col-2">
             <h1>AstroComerce</h1>

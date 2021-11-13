@@ -5,11 +5,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    
   }
-
+  
   body {
     font-family: 'Poppins', sans-serif;
+    background: radial-gradient(#fff, #ffd6d6);
   }
 `;
 
