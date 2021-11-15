@@ -1,6 +1,6 @@
 import React from "react";
 
-import MainHome from "./components/MainHome/MainHome";
+import MainHome from "./components/pages/MainHome/MainHome";
 import {
   AppContainer,
   ContainerHeader,
@@ -15,7 +15,7 @@ import {
   MenuItem,
   ContainerAnc
 } from "./App.styled"
-import ScreenProduct from "./components/ScreenProducts/ScreenProducts";
+import ScreenProduct from "./components/pages/ScreenProducts/ScreenProducts"
 
 
 

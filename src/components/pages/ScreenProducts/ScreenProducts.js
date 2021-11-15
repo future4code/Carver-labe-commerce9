@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Cart from "../../components/Cart/Cart";
-import MainProduct from "../../components/MainProduct/MainProduct";
-import { products } from "../../data.json";
+import Cart from "../../Cart/Cart"
+import MainProduct from "../../../components/MainProduct/MainProduct";
+import { products } from "../../../data.json";
 import { ScreenProductContainer } from "./ScreenProductsStyled";
 
 class ScreenProduct extends Component {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import astroDevs from "../../astro_laranja.png"
+import astroDevs from "../../../astro_laranja.png"
 
 
 
