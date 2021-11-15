@@ -2,11 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import imgAstro from "../../assets/atro.png"
 
+const ContainerHome = styled.div`
+  padding-top: 100px;
+`
 
 export default class MainHome extends React.Component {
   render(){
     return(
-  <div className="row">
+  <ContainerHome>
   <div className="col-1">
     <h1>AstroComerce</h1>
     <p>
@@ -21,7 +24,7 @@ export default class MainHome extends React.Component {
   <div className="col-2">
     <img src={imgAstro} alt="astro-dev" />
   </div>
-</div>
+</ContainerHome>
     )
   }
 }
