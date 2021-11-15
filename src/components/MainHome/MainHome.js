@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import imgAstro from "../../assets/atro.png"
+import astroDevs from "../../astro_laranja.png"
+
+
 
 const ContainerHome = styled.div`
   padding-top: 100px;
@@ -22,7 +24,7 @@ export default class MainHome extends React.Component {
   </div>
 
   <div className="col-2">
-    <img src={imgAstro} alt="astro-dev" />
+    <img src={astroDevs} alt="astro-dev" />
   </div>
 </ContainerHome>
     )
