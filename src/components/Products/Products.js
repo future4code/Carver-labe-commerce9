@@ -1,4 +1,5 @@
 import React from "react";
+
 import { ProductContainer, ProductItem, Wrap, SortContainer } from "./Products.style";
 
 class Products extends React.Component {
@@ -6,22 +7,27 @@ class Products extends React.Component {
 
   handleOrderBy = (event) => {
     this.setState({ selectedOrder: event.target.value});
+
   };
 
   handleOrderProducts = (order, products) => {
     let sortedProducts = [...products];
+
     switch (this.state.selectedOrder) {
       case "name":
         return sortedProducts = sortedProducts.sort((a, b) => this.state.order *(a.title.localeCompare(b.title)));
       default:
         sortedProducts = sortedProducts.sort((a, b) =>  this.state.order *(a.price - b.price))
+
     }
     return sortedProducts;
   };
 
+
   handleOrder = (event) => {
     this.setState({order:event.target.value})
   }
+
 
   render() {
     let { selectedOrder } = this.state;
@@ -31,6 +37,7 @@ class Products extends React.Component {
       <div>
         <ProductContainer>
           <p>
+
             {`${this.props.data.length} Produtos${this.props.data.length > 1 ? "s" : ""
               } encontrados.`}{" "}
           </p>
@@ -55,6 +62,7 @@ class Products extends React.Component {
               <option value={1}>Crescente</option>
             </select>
           </SortContainer>
+
         </ProductContainer>
 
         <Wrap>

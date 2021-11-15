@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 export const SortContainer = styled.div`
   & select {
     background-color: #fff;
@@ -22,6 +23,7 @@ export const SortContainer = styled.div`
     }
   }
 `;
+
 
 
 export const ProductContainer = styled.div`
