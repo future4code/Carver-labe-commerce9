@@ -1,25 +1,85 @@
 import React from "react";
-import { AppContainer } from "./App.styled";
-// import Carrinho from "./components/carrinho/Carrinho";
-// import Header from "./components/header/Header";
-/* import imgAstro from "./assets/astro_laranja.png";
-import navespacial from "./assets/navespacial.jpg";
-import nave2 from "./assets/astronauta1.jpg";
-import satelite2 from "./assets/satelite2.jpg";
-import produto1 from "./assets/nave-toy2.jpg";
-*/
-import ScreenProduct from "./pages/ScreenProducts/ScreenProduct";
-import NavBar from "./components/NavBar/NavBar";
-import Annouc from "./components/Annouc/Annouc";
 
-function App() {
-  return (
-    <AppContainer>
-      <Annouc />
-      <NavBar />
-      <ScreenProduct />
-    </AppContainer>
-  );
+import MainHome from "./components/MainHome/MainHome";
+import {
+  AppContainer,
+  ContainerHeader,
+  Wrapper,
+  Left,
+  Center,
+  Right,
+  Icon,
+  SerachContainer,
+  Input,
+  Logo,
+  MenuItem,
+  ContainerAnc
+} from "./App.styled"
+import ScreenProduct from "./components/ScreenProducts/ScreenProducts";
+
+
+
+export default class App extends React.Component {
+  state = {
+    display: MainHome
+  }
+
+  mostraProdutos = () => {
+    this.setState({ display: ScreenProduct})
+  }
+
+  mostraHome = () => {
+    this.setState({ display: MainHome })
+  }
+
+  render() {
+
+
+    return (
+      <AppContainer>
+        <ContainerAnc>
+          Super Oferta!! Uma viagem gratuita para a Lua em compras acima de
+          R$105000!
+        </ContainerAnc>
+        <ContainerHeader>
+          <Wrapper>
+            <Left>
+              <Icon>
+                <img
+                  className="astro-logo"
+                  src={"assets/astro-logo.png"}
+                  alt="astro-logo"
+                  onClick={this.mostraHome}
+                />
+              </Icon>
+              <SerachContainer>
+                <button class="btn-search">
+                  <i class="fas fa-search"></i>
+                </button>
+                <input
+                  type="text"
+                  class="input-search"
+                  placeholder="Escreva algo..."
+                />
+              </SerachContainer>
+            </Left>
+            <Center>
+              <Logo>AstroComerce</Logo>
+            </Center>
+            <Right>
+              <MenuItem
+              onClick={this.mostraProdutos}
+              >Produtos</MenuItem>
+              <MenuItem>Sobre nós</MenuItem>
+            </Right>
+          </Wrapper>
+        </ContainerHeader>
+
+        <this.state.display/>
+
+      </AppContainer>
+    )
+  }
+
 }
 
-export default App;

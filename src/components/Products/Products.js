@@ -1,24 +1,33 @@
 import React from "react";
-import OrderBy from "../OrderBy/OrderBy";
-import { ProductContainer, ProductItem, Wrap } from "./Products.style";
+
+import { ProductContainer, ProductItem, Wrap, SortContainer } from "./Products.style";
 
 class Products extends React.Component {
-  state = { selectedOrder: "" };
+  state = { selectedOrder: "price", order:1 };
 
   handleOrderBy = (event) => {
-    this.setState({ selectedOrder: event.target.value });
+    this.setState({ selectedOrder: event.target.value});
+
   };
 
   handleOrderProducts = (order, products) => {
     let sortedProducts = [...products];
-    if (order === "highest") {
-      sortedProducts = sortedProducts.sort((a, b) => b.price - a.price);
-    }
-    if (order === "lowest") {
-      sortedProducts = sortedProducts.sort((a, b) => a.price - b.price);
+
+    switch (this.state.selectedOrder) {
+      case "name":
+        return sortedProducts = sortedProducts.sort((a, b) => this.state.order *(a.title.localeCompare(b.title)));
+      default:
+        sortedProducts = sortedProducts.sort((a, b) =>  this.state.order *(a.price - b.price))
+
     }
     return sortedProducts;
   };
+
+
+  handleOrder = (event) => {
+    this.setState({order:event.target.value})
+  }
+
 
   render() {
     let { selectedOrder } = this.state;
@@ -28,14 +37,32 @@ class Products extends React.Component {
       <div>
         <ProductContainer>
           <p>
-            {`${this.props.data.length} Produtos${
-              this.props.data.length > 1 ? "s" : ""
-            } encontrados.`}{" "}
+
+            {`${this.props.data.length} Produtos${this.props.data.length > 1 ? "s" : ""
+              } encontrados.`}{" "}
           </p>
-          <OrderBy
-            selectedOrder={selectedOrder}
-            handleOrderBy={this.handleOrderBy}
-          />
+          <SortContainer>
+            Ordenar por:
+            <select
+              value={this.state.selectedOrder}
+              onChange={this.handleOrderBy}>
+
+              <option value="price">Preço</option>
+              <option value="name">Nome</option>
+            </select>
+          </SortContainer>
+
+          <SortContainer>
+            Ordem:
+            <select
+            value={this.state.order}
+            onChange={this.handleOrder}
+            >
+              <option value={-1}>Decrescente</option>
+              <option value={1}>Crescente</option>
+            </select>
+          </SortContainer>
+
         </ProductContainer>
 
         <Wrap>
