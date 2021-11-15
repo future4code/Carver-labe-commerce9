@@ -1,123 +1,82 @@
 import React from "react";
-import PaginaCompra from "./components/PaginaCompra/PaginaCompra";
 import MainHome from "./components/MainHome/MainHome";
-import styled from "styled-components";
-import astroLogo from "./assets/astro_logo.jpg"
+import {
+  AppContainer,
+  ContainerHeader,
+  Wrapper,
+  Left,
+  Center,
+  Right,
+  Icon,
+  SerachContainer,
+  Input,
+  Logo,
+  MenuItem,
+  ContainerAnc
+} from "./App.styled"
+import ScreenProduct from "./components/ScreenProducts/ScreenProducts";
 
-
-export const AppContainer = styled.div`
- & {
-    max-width: 1300px;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
-  }
-
-  .row {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-
-  .col-2 {
-    flex-basis: 50%;
-    min-width: 300px;
-  }
-  .col-2 img {
-    max-width: 100%;
-    padding: 50px 0;
-  }
-
-  .col-2 h1 {
-    font-size: 50px;
-    line-height: 60px;
-    margin: 25px 0;
-  }
-`;
-export const HeaderStyled = styled.div`
-  .logo {
-    width: 125px;
-  }
-
-  .nav-bar {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-  }
-
-  img {
-    height: 100px;
-  }
-
-  nav {
-    flex: 1;
-    text-align: right;
-  }
-
-  nav ul {
-    display: inline-block;
-    list-style-type: none;
-  }
-
-  nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-  }
-
-  p {
-    text-decoration: none;
-    color: #555;
-  }
-
-`;
 
 
 export default class App extends React.Component {
-    state = {
-      display: PaginaCompra
-    }
+  state = {
+    display: MainHome
+  }
 
-    mostraProdutos = () => {
-      this.setState({display:PaginaCompra})
-    }
+  mostraProdutos = () => {
+    this.setState({ display: ScreenProduct})
+  }
 
-    mostraHome = () => {
-      this.setState({display:MainHome})
-    }
+  mostraHome = () => {
+    this.setState({ display: MainHome })
+  }
 
   render() {
-    
+
 
     return (
-        <AppContainer>
-          <HeaderStyled>
-            <div className="nav-bar">
-              <div className="logo">
-                <img src={astroLogo} alt="logo" />
-              </div>
-              <nav>
-                <ul>
-                  <li>
-                    <p onClick={this.mostraHome}>Home</p>
-                  </li>
-                  <li>
-                    <p onClick={this.mostraProdutos}>Produtos</p>
-                  </li>
-                  <li>
-                    <p>Sobre</p>
-                  </li>
-                  <li>
-                    <p>Contato</p>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </HeaderStyled>
+      <AppContainer>
+        <ContainerAnc>
+          Super Oferta!! Uma viagem gratuita para a Lua em compras acima de
+          R$105000!
+        </ContainerAnc>
+        <ContainerHeader>
+          <Wrapper>
+            <Left>
+              <Icon>
+                <img
+                  className="astro-logo"
+                  src={"assets/astro-logo.png"}
+                  alt="astro-logo"
+                  onClick={this.mostraHome}
+                />
+              </Icon>
+              <SerachContainer>
+                <button class="btn-search">
+                  <i class="fas fa-search"></i>
+                </button>
+                <input
+                  type="text"
+                  class="input-search"
+                  placeholder="Escreva algo..."
+                />
+              </SerachContainer>
+            </Left>
+            <Center>
+              <Logo>AstroComerce</Logo>
+            </Center>
+            <Right>
+              <MenuItem
+              onClick={this.mostraProdutos}
+              >Produtos</MenuItem>
+              <MenuItem>Sobre nós</MenuItem>
+            </Right>
+          </Wrapper>
+        </ContainerHeader>
 
-          <this.state.display></this.state.display>
+        <this.state.display/>
 
-        </AppContainer>
+      </AppContainer>
     )
   }
 }

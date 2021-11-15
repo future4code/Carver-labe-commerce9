@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "idProduct": 0,
+      "idImg": 222,
+      "description": "Nave Ultra Mega Espacial da Tesla!",
+      "title": "Nave Tesla",
+      "currencyFormat": "R$",
+      "price": 3250.08
+    },
+    {
+      "idProduct": 1,
+      "idImg": 333,
+      "description": "Nave Ultra Mega Espacial da Tesla!",
+      "title": "Nave Tesla",
+      "currencyFormat": "R$",
+      "price": 15004.58
+    },
+    {
+      "idProduct": 2,
+      "idImg": 444,
+      "description": "Nave Ultra Mega Espacial da Tesla!",
+      "title": "Nave Tesla",
+      "currencyFormat": "R$",
+      "price": 9500.1
+    },
+    {
+      "idProduct": 3,
+      "idImg": 555,
+      "description": "Disco voador com astronauta da NASA!",
+      "title": "Disco voador",
+      "currencyFormat": "R$",
+      "price": 8950.9
+    },
+    {
+      "idProduct": 4,
+      "idImg": 666,
+      "description": "Disco voador com astronauta da NASA!",
+      "title": "Disco voador",
+      "currencyFormat": "R$",
+      "price": 1256.98
+    },
+    {
+      "idProduct": 5,
+      "idImg": 777,
+      "description": "Disco voador com astronauta da NASA!",
+      "title": "Disco voador",
+      "currencyFormat": "R$",
+      "price": 9054.0
+    }
+  ]
+}
