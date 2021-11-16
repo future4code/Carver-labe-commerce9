@@ -1,4 +1,5 @@
-# AstroComerce
+   <div align="center"><h1>AstroComerce</h1></div>
+   
 <p align="center">
   <img width="460" heigh="300" src="src/astro_laranja.png">
   </p>
