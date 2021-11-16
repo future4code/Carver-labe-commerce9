@@ -3,7 +3,7 @@
   <img width="460" heigh="300" src="src/astro_laranja.png">
   </p>
 
-Link do site do projeto no surge: https://crooked-beast.surge.sh/
+Link do site do projeto no surge: 
 
 ### PROJETO E-comerce usando Reactjs
 
