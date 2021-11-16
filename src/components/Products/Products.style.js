@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 
 export const SortContainer = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+
   & select {
     background-color: #fff;
     outline: none;

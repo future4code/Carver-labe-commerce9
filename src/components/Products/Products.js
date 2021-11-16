@@ -1,23 +1,49 @@
 import React from "react";
-
+import { Filters } from "../Filters/Filters";
 import { ProductContainer, ProductItem, Wrap, SortContainer } from "./Products.style";
 
 class Products extends React.Component {
-  state = { selectedOrder: "price", order:1 };
+  state = {
+    selectedOrder: "price",
+    order: 1,
+    minFilter: "",
+    maxFilter: "",
+    nameFilter: "",
+  };
+
+
+  onChangeMinFilter = (event) => {
+    this.setState({minFilter:event.target.value})
+  }
+
+  onChangeMaxFilter = (event) => {
+    this.setState({maxFilter:event.target.value})
+  }
+  onChangeNameFilter = (event) => {
+    this.setState({nameFilter:event.target.value})
+  }
 
   handleOrderBy = (event) => {
     this.setState({ selectedOrder: event.target.value});
 
   };
 
+  getFilteredAndOrderedList = () => {
+    return this.props.data
+      .filter((product) => this.state.maxFilter ? product.price < this.state.maxFilter : true)
+      .filter((product) => this.state.minFilter ? product.price > this.state.minFilter : true)
+      .filter((product) => this.state.nameFilter.toLowerCase() ? product.title.toLowerCase().includes(this.state.nameFilter) : true)
+  }
+
+
   handleOrderProducts = (order, products) => {
     let sortedProducts = [...products];
 
     switch (this.state.selectedOrder) {
       case "name":
-        return sortedProducts = sortedProducts.sort((a, b) => this.state.order *(a.title.localeCompare(b.title)));
+        return sortedProducts = sortedProducts.sort((a, b) => this.state.order * (a.title.localeCompare(b.title)));
       default:
-        sortedProducts = sortedProducts.sort((a, b) =>  this.state.order *(a.price - b.price))
+        sortedProducts = sortedProducts.sort((a, b) => this.state.order * (a.price - b.price))
 
     }
     return sortedProducts;
@@ -25,22 +51,34 @@ class Products extends React.Component {
 
 
   handleOrder = (event) => {
-    this.setState({order:event.target.value})
+    this.setState({ order: event.target.value })
   }
 
 
   render() {
     let { selectedOrder } = this.state;
-    let products = this.handleOrderProducts(selectedOrder, this.props.data);
+
+    let filterProducts = this.getFilteredAndOrderedList()
+    let products = this.handleOrderProducts(selectedOrder, filterProducts )
+
+
 
     return (
       <div>
         <ProductContainer>
           <p>
 
-            {`${this.props.data.length} Produtos${this.props.data.length > 1 ? "s" : ""
+            {`${products.length} Produtos${this.props.data.length > 1 ? "s" : ""
               } encontrados.`}{" "}
           </p>
+          <Filters
+          minFilter={this.state.minFilter}
+          onChangeMinFilter={this.onChangeMinFilter}
+          maxFilter={this.state.maxFilter}
+          onChangeMaxFilter={this.onChangeMaxFilter}
+          nameFilter={this.state.nameFilter}
+          onChangeNameFilter={this.onChangeNameFilter}
+          />
           <SortContainer>
             Ordenar por:
             <select
@@ -50,13 +88,13 @@ class Products extends React.Component {
               <option value="price">Preço</option>
               <option value="name">Nome</option>
             </select>
-          </SortContainer>
 
-          <SortContainer>
+
+
             Ordem:
             <select
-            value={this.state.order}
-            onChange={this.handleOrder}
+              value={this.state.order}
+              onChange={this.handleOrder}
             >
               <option value={-1}>Decrescente</option>
               <option value={1}>Crescente</option>
