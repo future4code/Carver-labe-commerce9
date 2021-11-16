@@ -1,6 +1,6 @@
 
 <p align="center">
-  # AstroComerce
+  <h1>AstroComerce</h1>
   <img width="460" heigh="300" src="src/astro_laranja.png">
   </p>
 
