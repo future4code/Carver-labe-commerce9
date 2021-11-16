@@ -9,18 +9,6 @@ class ScreenProduct extends Component {
     cartItems: [],
   };
 
-  /*   componentDidUpdate() {
-    this.handleUpdateLocalStorage();
-  } */
-
-  componentDidMount() {
-    window.addEventListener("beforeunload", this.handleUpdateLocalStorage);
-  }
-
-  handleUpdateLocalStorage = () => {
-    localStorage.setItem("carts", JSON.stringify(this.state.cartItems));
-  };
-
   handleAddToCart = (product) => {
     let isPresent =
       this.state.cartItems.findIndex(

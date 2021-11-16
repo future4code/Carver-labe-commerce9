@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const SortContainer = styled.div`
   & select {
     background-color: #fff;
@@ -24,8 +23,6 @@ export const SortContainer = styled.div`
   }
 `;
 
-
-
 export const ProductContainer = styled.div`
   & {
     display: flex;
@@ -48,6 +45,8 @@ export const ProductItem = styled.div`
     width: 25%;
     position: relative;
     margin-bottom: 2rem;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   .product-label {
     position: absolute;

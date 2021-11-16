@@ -66,10 +66,14 @@ class Cart extends React.Component {
           <div className="cart-checkout">
             <div>
               <p>SUBTOTAL</p>
-              <p>R$ {totalAmount}</p>
+              <p>R$ {Number(totalAmount.toFixed(2))}</p>
             </div>
             <button
-              onClick={() => alert(`O total da compra é: R$${totalAmount}`)}
+              onClick={() =>
+                alert(
+                  `O total da compra é: R$${Number(totalAmount.toFixed(2))}`
+                )
+              }
             >
               CHECKOUT
             </button>
