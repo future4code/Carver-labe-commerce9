@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Cart from "../../Cart/Cart"
+import Cart from "../../Cart/Cart";
 import MainProduct from "../../../components/MainProduct/MainProduct";
 import { products } from "../../../data.json";
 import { ScreenProductContainer } from "./ScreenProductsStyled";
@@ -9,10 +9,31 @@ class ScreenProduct extends Component {
     cartItems: [],
   };
 
+  /*   componentDidUpdate() {
+    this.handleUpdateLocalStorage();
+  } */
+
+  componentDidMount() {
+    window.addEventListener("beforeunload", this.handleUpdateLocalStorage);
+  }
+
+  handleUpdateLocalStorage = () => {
+    localStorage.setItem("carts", JSON.stringify(this.state.cartItems));
+  };
+
   handleAddToCart = (product) => {
-    this.setState((prevState) => ({
-      cartItems: prevState.cartItems.concat({ ...product, quantity: 1 }),
-    }));
+    let isPresent =
+      this.state.cartItems.findIndex(
+        (prod) => prod.idProduct === product.idProduct
+      ) !== -1;
+
+    if (isPresent) {
+      this.incrementQuantity(product.idProduct);
+    } else {
+      this.setState((prevState) => ({
+        cartItems: prevState.cartItems.concat({ ...product, quantity: 1 }),
+      }));
+    }
   };
 
   incrementQuantity = (idProduct) => {
@@ -35,7 +56,7 @@ class ScreenProduct extends Component {
   decrementQuantity = (idProduct) => {
     this.setState((prevState) => {
       let updatedCartItems = prevState.cartItems.map((product) => {
-        if (product.idProduct === idProduct) {
+        if (product.idProduct === idProduct && product.quantity > 0) {
           return {
             ...product,
             quantity: product.quantity - 1,
