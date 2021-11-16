@@ -1,5 +1,5 @@
 
-<p align="center">
+<p align="center" text-align="center">
   <h1>AstroComerce</h1>
   <img width="460" heigh="300" src="src/astro_laranja.png">
   </p>
