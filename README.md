@@ -4,7 +4,7 @@
   <img width="460" heigh="300" src="src/astro_laranja.png">
   </p>
 
-Link do site do projeto no surge: 
+Link do site do projeto no surge: https://satisfying-oil.surge.sh/
 
 ### PROJETO E-comerce usando Reactjs
 
