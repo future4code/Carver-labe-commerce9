@@ -23,9 +23,9 @@ class Products extends React.Component {
     this.setState({nameFilter:event.target.value})
   }
 
-  handleOrderBy = (event) => {
-    this.setState({ selectedOrder: event.target.value});
 
+  handleOrderBy = (event) => {
+    this.setState({ selectedOrder: event.target.value });
   };
 
   getFilteredAndOrderedList = () => {
@@ -41,18 +41,22 @@ class Products extends React.Component {
 
     switch (this.state.selectedOrder) {
       case "name":
-        return sortedProducts = sortedProducts.sort((a, b) => this.state.order * (a.title.localeCompare(b.title)));
+        return (sortedProducts = sortedProducts.sort(
+          (a, b) => this.state.order * a.title.localeCompare(b.title)
+        ));
       default:
-        sortedProducts = sortedProducts.sort((a, b) => this.state.order * (a.price - b.price))
+        sortedProducts = sortedProducts.sort(
+          (a, b) => this.state.order * (a.price - b.price)
+        );
 
     }
     return sortedProducts;
   };
 
-
   handleOrder = (event) => {
-    this.setState({ order: event.target.value })
-  }
+
+    this.setState({ order: event.target.value });
+  };
 
 
   render() {
@@ -70,6 +74,7 @@ class Products extends React.Component {
 
             {`${products.length} Produtos${this.props.data.length > 1 ? "s" : ""
               } encontrados.`}{" "}
+
           </p>
           <Filters
           minFilter={this.state.minFilter}
@@ -83,8 +88,8 @@ class Products extends React.Component {
             Ordenar por:
             <select
               value={this.state.selectedOrder}
-              onChange={this.handleOrderBy}>
-
+              onChange={this.handleOrderBy}
+            >
               <option value="price">Preço</option>
               <option value="name">Nome</option>
             </select>
@@ -100,12 +105,12 @@ class Products extends React.Component {
               <option value={1}>Crescente</option>
             </select>
           </SortContainer>
-
         </ProductContainer>
 
         <Wrap>
           {products.map((product) => (
             <Product
+              key={product.idProduct}
               {...product}
               handleAddToCart={this.props.handleAddToCart}
             />

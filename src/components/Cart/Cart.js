@@ -20,6 +20,10 @@ class Cart extends React.Component {
       return acc;
     }, 0);
 
+    let totalAmount = this.props.cartItems.reduce((acc, currentValue) => {
+      acc = acc + currentValue.price * currentValue.quantity;
+      return acc;
+    }, 0);
     if (!isOpen) {
       return <ClosedCart open={this.open} totalQuantity={totalQuantity} />;
     }
@@ -62,9 +66,17 @@ class Cart extends React.Component {
           <div className="cart-checkout">
             <div>
               <p>SUBTOTAL</p>
-              <p>$ 199.00</p>
+              <p>R$ {Number(totalAmount.toFixed(2))}</p>
             </div>
-            <button>CHECKOUT</button>
+            <button
+              onClick={() =>
+                alert(
+                  `O total da compra é: R$${Number(totalAmount.toFixed(2))}`
+                )
+              }
+            >
+              CHECKOUT
+            </button>
           </div>
         </div>
       </CartContainer>
